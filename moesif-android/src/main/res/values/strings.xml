@@ -1,0 +1,8 @@
+<!--
+ - MoesifAndroid
+ -
+-->
+<resources>
+    <string name="app_name">MoesifAndroid</string>
+    <string name="preference_file_key">moesif_android_prefs</string>
+</resources>
