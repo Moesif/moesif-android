@@ -19,14 +19,14 @@ The two popular Android networking clients (Volley and Retrofit) support using O
 
 If using Retrofit, 1.9 or greater is required.
 If using Volley, a simple one line change is required to use our MoesifOkHttpXStack.
- 
+
 Module Structure
 ================
 __moesif-android:__
 The core SDK shared across platforms, imported automatically by the below HTTP stack specific modules.
 
 __moesif-android-okhttp3:__
-Supports the latest version (3.x) of OkHttp 
+Supports the latest version (3.x) of OkHttp
 
 __moesif-android-okhttp2:__
 If you want to stick with OkHttp 2.x for legacy reasons, import this module instead of moesif-android-okhttp3
@@ -54,15 +54,15 @@ Otherwise, you may get duplicate class errors.
     compile ('com.moesif.moesif-android:moesif-android-okhttp3:1.0.0') {
         exclude group: 'com.android.volley'
     }
-``
-	
+```
+
 ### 2. In your AndroidManifest.xml, add your Moesif ApplicationId under the "application" node:
 
 ```xml
 <application>
-    
+
     <!-- Your other code -->
-    
+
     <meta-data
         android:name="com.moesif.android.ApplicationId"
         android:value="your_moesif_application_id" />
@@ -87,8 +87,8 @@ public final class MyApplicationClass extends Application {
 ### 4. Add the Interceptor
 
 #### 4.a If using Retrofit/OkHttp3 natively:
-Add the Moesif MoesifOkHttp3Interceptor when building the Retrofit/OkHttp Client. 
-If you have existing interceptors, you probably want Moesif's interceptor last in the chain to ensure it captures the HTTP call 
+Add the Moesif MoesifOkHttp3Interceptor when building the Retrofit/OkHttp Client.
+If you have existing interceptors, you probably want Moesif's interceptor last in the chain to ensure it captures the HTTP call
 just before going over the wire.
 [See more Info on using OkHttp Interceptors](https://github.com/square/okhttp/wiki/Interceptors)
 
@@ -110,7 +110,7 @@ Pass in a new MoesifOkHttp3Stack object when creating Volley's request queue.
 ```java
 import com.moesif.android.okhttp3;
 
-    RequestQueue queue = Volley.newRequestQueue(myContext.getApplicationContext(), 
+    RequestQueue queue = Volley.newRequestQueue(myContext.getApplicationContext(),
                                                 new MoesifOkHttp3Stack());
 
 ```
@@ -148,7 +148,7 @@ myHttpClient.networkInterceptors().add(new MoesifOkHttp2Interceptor());
 ```java
 import com.moesif.android.okhttp2;
 
-    RequestQueue queue = Volley.newRequestQueue(myContext.getApplicationContext(), 
+    RequestQueue queue = Volley.newRequestQueue(myContext.getApplicationContext(),
                                                 new MoesifOkHttp2Stack(new OkHttpClient()));
 
 ```
