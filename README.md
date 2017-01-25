@@ -1,5 +1,5 @@
-Moesif SDK for Android
-======================
+# Moesif SDK for Android
+
 
 [![](https://jitpack.io/v/Moesif/moesif-android.svg)](https://jitpack.io/#Moesif/moesif-android)
 
@@ -11,8 +11,7 @@ __Check out Moesif's
 moesif-android is a SDK that automatically captures HTTP traffic with just a few lines of code.
 
 
-Requirements
-============
+## Requirements
 This lib requires the use of OkHttp 2.2 or better. OkHttp 3.x is also supported.
 
 The two popular Android networking clients (Volley and Retrofit) support using OkHttp so you are probably fine if using one of these two libs.
@@ -20,8 +19,7 @@ The two popular Android networking clients (Volley and Retrofit) support using O
 If using Retrofit, 1.9 or greater is required.
 If using Volley, a simple one line change is required to use our MoesifOkHttpXStack.
 
-Module Structure
-================
+## Module Structure
 __moesif-android:__
 The core SDK shared across platforms, imported automatically by the below HTTP stack specific modules.
 
@@ -31,8 +29,7 @@ Supports the latest version (3.x) of OkHttp
 __moesif-android-okhttp2:__
 If you want to stick with OkHttp 2.x for legacy reasons, import this module instead of moesif-android-okhttp3
 
-How To Configure:
-=================
+## How To Configure:
 
 ### 1. Add the dependency to your app/build.gradle
 ```gradle
@@ -115,8 +112,7 @@ import com.moesif.android.okhttp3;
 
 ```
 
-Configuring using OkHttp2:
-==========================
+## Configuring using OkHttp2:
 Follow the previous configuration steps, except a few changes:
 
 ### 1. Import moesif-android-okhttp2 instead
@@ -153,9 +149,8 @@ import com.moesif.android.okhttp2;
 
 ```
 
-LICENSE
-=======
-See LICENSE File for details. The MoesifOkHttp3Stack and
+## License info for the Android SDK
+See [LICENSE File](https://raw.githubusercontent.com/Moesif/moesif-android/master/LICENSE) for details. The MoesifOkHttp3Stack and
 MoesifOkHttp2Stack classes, and the entirety of the com.moesif.android.inspector package used by this
 software have been licensed from non-Moesif sources and modified
 for use in the library. Please see the relevant source files, and the
