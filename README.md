@@ -3,12 +3,7 @@
 
 [![](https://jitpack.io/v/Moesif/moesif-android.svg)](https://jitpack.io/#Moesif/moesif-android)
 
-
-__Check out Moesif's
-[Android developer documentation](https://www.moesif.com/developer-documentation) to learn more__
-
-
-moesif-android is a SDK that automatically captures HTTP traffic with just a few lines of code.
+moesif-android is a SDK that automatically captures HTTP traffic such as to your internal APIs or external APIs like Stripe.
 
 
 ## Requirements
@@ -155,3 +150,7 @@ MoesifOkHttp2Stack classes, and the entirety of the com.moesif.android.inspector
 software have been licensed from non-Moesif sources and modified
 for use in the library. Please see the relevant source files, and the
 LICENSE file in the com.moesif.android.inspector package for details.
+
+## Other Integrations
+
+To view more more documenation on integration options, please visit __[the Integration Options Documentation](https://www.moesif.com/docs/getting-started/integration-options/).__ 
