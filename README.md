@@ -119,7 +119,7 @@ import com.moesif.android.okhttp3;
 Follow the previous configuration steps, except a few changes:
 
 ### 1. Import moesif-android-okhttp2 instead
-```
+```gradle
 # Add the jcenter repository, if not present
 repositories {
   jcenter()  
