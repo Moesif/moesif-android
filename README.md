@@ -41,6 +41,7 @@ dependencies {
 
 If your Android project imports Volley as an unmanaged artifact, you may have to exclude volley as a transitive dependency:
 Otherwise, you may get duplicate class errors.
+
 ```gradle
 # Add the Bintray repository, if not present
 
@@ -158,4 +159,4 @@ LICENSE file in the com.moesif.android.inspector package for details.
 
 ## Other Integrations
 
-To view more more documenation on integration options, please visit __[the Integration Options Documentation](https://www.moesif.com/docs/getting-started/integration-options/).__ 
+To view more more documenation on integration options, please visit __[the Integration Options Documentation](https://www.moesif.com/docs/getting-started/integration-options/).__
