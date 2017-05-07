@@ -1,5 +1,30 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'moesif-android-okhttp3'
+
+    publishedGroupId = 'com.moesif.android'
+    libraryName = 'moesif-android-okhttp3'
+    artifact = 'moesif-android-okhttp3'
+
+    libraryDescription = 'OkHttp3 interceptor for moesif-android to caputure HTTP API Calls'
+
+    siteUrl = 'https://www.moesif.com/docs/client-integration/android/'
+    githubUrl = 'https://github.com/Moesif/moesif-android'
+    githubRepository= 'Moesif/moesif-android'
+
+    libraryVersion = '1.1.0'
+
+    developerId = 'dgilling'
+    developerName = 'Derric Gilling'
+    developerEmail = 'derric@moesif.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
@@ -14,6 +39,7 @@ android {
 
     lintOptions {
         warning 'InvalidPackage'
+        abortOnError false
     }
 }
 
@@ -38,3 +64,6 @@ dependencies {
 
 sourceCompatibility = "1.7"
 targetCompatibility = "1.7"
+
+apply from: '../install.gradle'
+apply from: '../bintray.gradle'

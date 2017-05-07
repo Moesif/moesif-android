@@ -1,7 +1,7 @@
 # Moesif SDK for Android
 
 
-[![](https://jitpack.io/v/Moesif/moesif-android.svg)](https://jitpack.io/#Moesif/moesif-android)
+ [ ![Download](https://api.bintray.com/packages/moesif/maven/moesif-android/images/download.svg) ](https://bintray.com/moesif/maven/moesif-android/_latestVersion)
 
 moesif-android is a SDK that automatically captures HTTP traffic such as to your internal APIs or external APIs like Stripe.
 
@@ -28,24 +28,31 @@ If you want to stick with OkHttp 2.x for legacy reasons, import this module inst
 
 ### 1. Add the dependency to your app/build.gradle
 ```gradle
-# Add the JitPack repository, if not present
+# Add the Bintray repository, if not present
 
 repositories {
-    ...
-    maven { url "https://jitpack.io" }
+    maven { url 'https://dl.bintray.com/moesif/maven' }
 }
 
 dependencies {
-    compile 'com.moesif.moesif-android:moesif-android-okhttp3:1.0.0'
+    compile 'com.moesif.android:moesif-android-okhttp3:1.1.0'
 }
 ```
 
 If your Android project imports Volley as an unmanaged artifact, you may have to exclude volley as a transitive dependency:
 Otherwise, you may get duplicate class errors.
 ```gradle
-    compile ('com.moesif.moesif-android:moesif-android-okhttp3:1.0.0') {
+# Add the Bintray repository, if not present
+
+repositories {
+    maven { url 'https://dl.bintray.com/moesif/maven' }
+}
+
+dependencies {
+    compile ('com.moesif.android:moesif-android-okhttp3:1.1.0') {
         exclude group: 'com.android.volley'
     }
+}
 ```
 
 ### 2. In your AndroidManifest.xml, add your Moesif ApplicationId under the "application" node:
@@ -112,15 +119,13 @@ Follow the previous configuration steps, except a few changes:
 
 ### 1. Import moesif-android-okhttp2 instead
 ```
-# Add the JitPack repository, if not present
-
+# Add the Bintray repository, if not present
 repositories {
-    ...
-    maven { url "https://jitpack.io" }
+    maven { url 'https://dl.bintray.com/moesif/maven' }
 }
 
 dependencies {
-    compile 'com.moesif.moesif-android:moesif-android-okhttp2:1.0.1'
+    compile 'com.moesif.android:moesif-android-okhttp2:1.1.0'
 }
 ```
 

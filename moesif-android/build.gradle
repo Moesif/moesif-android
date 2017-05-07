@@ -1,5 +1,30 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'moesif-android'
+
+    publishedGroupId = 'com.moesif.android'
+    libraryName = 'moesif-android'
+    artifact = 'moesif-android'
+
+    libraryDescription = 'Android Library to log HTTP API Calls to Moesif for debugging'
+
+    siteUrl = 'https://www.moesif.com/docs/client-integration/android/'
+    githubUrl = 'https://github.com/Moesif/moesif-android'
+    githubRepository= 'Moesif/moesif-android'
+
+    libraryVersion = '1.1.0'
+
+    developerId = 'dgilling'
+    developerName = 'Derric Gilling'
+    developerEmail = 'derric@moesif.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     //update the following to match your sdk and build tools versions
     compileSdkVersion 23
@@ -12,6 +37,10 @@ android {
         versionName "1.0.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'proguard.txt'
+    }
+    lintOptions {
+        warning 'InvalidPackage'
+        abortOnError false
     }
     buildTypes {
         release {
@@ -35,3 +64,6 @@ dependencies {
     androidTestCompile 'com.android.support.test:runner:0.4.1'
     androidTestCompile 'com.android.support.test:rules:0.4.1'
 }
+
+apply from: '../install.gradle'
+apply from: '../bintray.gradle'

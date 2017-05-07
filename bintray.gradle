@@ -1,0 +1,59 @@
+apply plugin: 'com.jfrog.bintray'
+version = libraryVersion
+
+if (project.hasProperty("android")) { // Android libraries
+    task sourcesJar(type: Jar) {
+        classifier = 'sources'
+        from android.sourceSets.main.java.srcDirs
+    }
+
+   // task javadoc(type: Javadoc) {
+   //     exclude "**/LICENSE"
+   //     source = android.sourceSets.main.java.srcDirs
+   //     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+   // }
+} else { // Java libraries
+    task sourcesJar(type: Jar, dependsOn: classes) {
+        classifier = 'sources'
+        from sourceSets.main.allSource
+    }
+}
+
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
+
+artifacts {
+ //   archives javadocJar
+    archives sourcesJar
+}
+
+// Bintray
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
+    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
+
+    configurations = ['archives']
+    pkg {
+        repo = bintrayRepo
+        name = bintrayName
+        userOrg = 'moesif'
+        desc = libraryDescription
+        websiteUrl = siteUrl
+        issueTrackerUrl = githubUrl+'/issues'
+        vcsUrl = githubUrl + '.git'
+        licenses = allLicenses
+        githubRepo = githubRepository
+        githubReleaseNotesFile = 'README.md'
+        publish = true
+        publicDownloadNumbers = false
+        version {
+            name = libraryVersion
+            desc = libraryDescription
+        }
+    }
+}

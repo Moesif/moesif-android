@@ -9,6 +9,8 @@ buildscript {
     dependencies {
         //update the following line to match your gradle version
         classpath 'com.android.tools.build:gradle:2.2.1'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1+"
     }
 }
 
@@ -16,5 +18,10 @@ allprojects {
     repositories {
         jcenter()
         mavenCentral()
+        maven { url 'https://dl.bintray.com/moesif/maven' }
     }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
 }
