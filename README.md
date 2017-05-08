@@ -28,10 +28,10 @@ If you want to stick with OkHttp 2.x for legacy reasons, import this module inst
 
 ### 1. Add the dependency to your app/build.gradle
 ```gradle
-# Add the jcenter repository, if not present
+# Add the bintray repository, if not present
 
 repositories {
-  jcenter()  
+  maven { url 'https://dl.bintray.com/moesif/maven' }
 }
 
 dependencies {
@@ -43,10 +43,10 @@ If your Android project imports Volley as an unmanaged artifact, you may have to
 Otherwise, you may get duplicate class errors.
 
 ```gradle
-# Add the jcenter repository, if not present
+# Add the bintray repository, if not present
 
 repositories {
-  jcenter()  
+  maven { url 'https://dl.bintray.com/moesif/maven' }
 }
 
 dependencies {
@@ -120,9 +120,9 @@ Follow the previous configuration steps, except a few changes:
 
 ### 1. Import moesif-android-okhttp2 instead
 ```gradle
-# Add the jcenter repository, if not present
+# Add the bintray repository, if not present
 repositories {
-  jcenter()  
+  maven { url 'https://dl.bintray.com/moesif/maven' }
 }
 
 dependencies {
