@@ -14,7 +14,7 @@ ext {
     githubUrl = 'https://github.com/Moesif/moesif-android'
     githubRepository= 'Moesif/moesif-android'
 
-    libraryVersion = '1.1.0'
+    libraryVersion = '1.1.1'
 
     developerId = 'dgilling'
     developerName = 'Derric Gilling'

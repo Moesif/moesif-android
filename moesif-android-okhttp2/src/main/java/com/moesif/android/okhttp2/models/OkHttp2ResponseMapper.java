@@ -17,11 +17,16 @@ public class OkHttp2ResponseMapper extends EventResponseModel {
 
     public static EventResponseModel createOkHttp2Response(Response response, Connection connection) {
 
+        String ipAddress = null;
+        if (connection != null) {
+            ipAddress = connection.getRoute().getSocketAddress().getAddress().getHostAddress();
+        }
+
         EventResponseModel responseModel = new EventResponseModel();
         responseModel.setTime(new Date());
         responseModel.setStatus(response.code());
         responseModel.setHeaders(CollectionUtils.flattenMultiMap(response.headers().toMultimap()));
-        responseModel.setIpAddress(connection.getRoute().getSocketAddress().getAddress().getHostAddress());
+        responseModel.setIpAddress(ipAddress);
         return responseModel;
     }
 }

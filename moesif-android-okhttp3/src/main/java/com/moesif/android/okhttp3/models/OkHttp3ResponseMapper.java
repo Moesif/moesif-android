@@ -21,11 +21,16 @@ public class OkHttp3ResponseMapper extends EventResponseModel {
 
     public static EventResponseModel createOkHttp3Response(Response response, Connection connection) {
 
+        String ipAddress = null;
+        if (connection != null) {
+            ipAddress = connection.route().socketAddress().getAddress().getHostAddress();
+        }
+
         EventResponseModel responseModel = new EventResponseModel();
         responseModel.setTime(new Date());
         responseModel.setStatus(response.code());
         responseModel.setHeaders(CollectionUtils.flattenMultiMap(response.headers().toMultimap()));
-        responseModel.setIpAddress(connection.route().socketAddress().getAddress().getHostAddress());
+        responseModel.setIpAddress(ipAddress);
         return responseModel;
     }
 }
