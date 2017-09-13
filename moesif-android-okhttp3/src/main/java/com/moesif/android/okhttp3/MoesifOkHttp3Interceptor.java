@@ -58,44 +58,43 @@ public class MoesifOkHttp3Interceptor implements Interceptor {
         final EventResponseModel loggedResponse =
                 OkHttp3ResponseMapper.createOkHttp3Response(response, connection);
 
-        if (response.header("Content-Type").toLowerCase().contains("application/json")) {
+        final boolean isJsonHeader = response.header("Content-Type").toLowerCase().contains("application/json");
 
-            if (responseBody != null) {
-                try {
-                    final ByteArrayOutputStream outputStream = new ByteArrayOutputStream((int) response.body().contentLength()*2);
+        if (responseBody != null) {
+            try {
+                final ByteArrayOutputStream outputStream = new ByteArrayOutputStream((int) response.body().contentLength()*2);
 
-                    InputStream responseStream = mEventReporter.interpretResponseStream(requestId,
-                            response.header("Content-Encoding"),
-                            responseBody.byteStream(),
-                            outputStream,
-                            new ResponseHandler() {
-                                @Override
-                                public void onRead(int numBytes) {
-                                }
+                InputStream responseStream = mEventReporter.interpretResponseStream(requestId,
+                        response.header("Content-Encoding"),
+                        responseBody.byteStream(),
+                        outputStream,
+                        new ResponseHandler() {
+                            @Override
+                            public void onRead(int numBytes) {
+                            }
 
-                                @Override
-                                public void onReadDecoded(int numBytes) {
-                                }
+                            @Override
+                            public void onReadDecoded(int numBytes) {
+                            }
 
-                                @Override
-                                public void onEOF() {
-                                    sendEvent(loggedRequest, loggedResponse, outputStream);
-                                }
+                            @Override
+                            public void onEOF() {
+                                sendEvent(loggedRequest, loggedResponse, outputStream, isJsonHeader);
+                            }
 
-                                @Override
-                                public void onError(IOException e) {
-                                    MoesifLog.getLogger().e(LOGTAG, "Error Decompressing stream", e);
-                                }
-                            });
+                            @Override
+                            public void onError(IOException e) {
+                                MoesifLog.getLogger().e(LOGTAG, "Error Decompressing stream", e);
+                            }
+                        });
 
-                    if (responseStream != null) {
-                        response = response.newBuilder()
-                            .body(new ForwardingResponseBody(responseBody, responseStream))
-                            .build();
-                    }
-                } catch (Exception e) {
-                    MoesifLog.getLogger().e(LOGTAG, "Cannot Response Body as JSON", e);
+                if (responseStream != null) {
+                    response = response.newBuilder()
+                        .body(new ForwardingResponseBody(responseBody, responseStream))
+                        .build();
                 }
+            } catch (Exception e) {
+                MoesifLog.getLogger().e(LOGTAG, "Cannot Response Body as JSON", e);
             }
         }
 
@@ -103,11 +102,18 @@ public class MoesifOkHttp3Interceptor implements Interceptor {
     }
 
     private void sendEvent(EventRequestModel loggedRequest, EventResponseModel loggedResponse,
-                           ByteArrayOutputStream bodyStream) {
+                           ByteArrayOutputStream bodyStream, boolean isJsonHeader) {
         try {
-            ObjectMapper mapper = new ObjectMapper();
-            Object json = mapper.readValue(bodyStream.toByteArray(), Object.class);
-            loggedResponse.setBody(json);
+            if (isJsonHeader) {
+                ObjectMapper mapper = new ObjectMapper();
+                Object json = mapper.readValue(bodyStream.toByteArray(), Object.class);
+                loggedResponse.setBody(json);
+            } else {
+                if (bodyStream.size() < 100000) {
+                    loggedResponse.setBody(android.util.Base64.encodeToString(bodyStream.toByteArray(), 0));
+                    loggedResponse.setTransferEncoding("base64");
+                }
+            }
 
             final EventModel loggedEvent =
                     OkHttp3EventMapper.createOkHttp3Event(loggedRequest, loggedResponse);

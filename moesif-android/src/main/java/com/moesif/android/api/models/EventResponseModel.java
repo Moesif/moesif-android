@@ -19,6 +19,7 @@ public class EventResponseModel
     private Object headers;
     private Object body;
     private String ipAddress;
+    private String transferEncoding;
     /** GETTER
      * Time when response received
      */
@@ -103,6 +104,23 @@ public class EventResponseModel
     public void setIpAddress (String value) { 
         this.ipAddress = value;
         notifyObservers(this.ipAddress);
+    }
+
+    /** GETTER
+     * Transfer Encoding such as base64
+     */
+    @JsonProperty("transfer_encoding")
+    public String getTransferEncoding ( ) {
+        return this.transferEncoding;
+    }
+
+    /** SETTER
+     * Transfer Encoding such as base64
+     */
+    @JsonProperty("transfer_encoding")
+    public void setTransferEncoding (String value) {
+        this.transferEncoding = value;
+        notifyObservers(this.transferEncoding);
     }
  
 }

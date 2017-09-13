@@ -21,6 +21,7 @@ public class EventRequestModel
     private String apiVersion;
     private String ipAddress;
     private Object body;
+    private String transferEncoding;
     /** GETTER
      * Time when request was made
      */
@@ -139,6 +140,23 @@ public class EventRequestModel
     public void setBody (Object value) { 
         this.body = value;
         notifyObservers(this.body);
+    }
+
+    /** GETTER
+     * Transfer Encoding such as base64
+     */
+    @JsonProperty("transfer_encoding")
+    public String getTransferEncoding ( ) {
+        return this.transferEncoding;
+    }
+
+    /** SETTER
+     * Transfer Encoding such as base64
+     */
+    @JsonProperty("transfer_encoding")
+    public void setTransferEncoding (String value) {
+        this.transferEncoding = value;
+        notifyObservers(this.transferEncoding);
     }
  
 }

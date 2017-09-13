@@ -35,7 +35,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.moesif.android:moesif-android-okhttp3:1.1.1'
+    compile 'com.moesif.android:moesif-android-okhttp3:1.1.2'
 }
 ```
 
@@ -50,7 +50,7 @@ repositories {
 }
 
 dependencies {
-    compile ('com.moesif.android:moesif-android-okhttp3:1.1.1') {
+    compile ('com.moesif.android:moesif-android-okhttp3:1.1.2') {
         exclude group: 'com.android.volley'
     }
 }
@@ -126,7 +126,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.moesif.android:moesif-android-okhttp2:1.1.1'
+    compile 'com.moesif.android:moesif-android-okhttp2:1.1.2'
 }
 ```
 
