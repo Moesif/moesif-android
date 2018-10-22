@@ -1,7 +1,9 @@
 # Moesif SDK for Android
 
-
- [ ![Download](https://api.bintray.com/packages/moesif/maven/moesif-android/images/download.svg) ](https://bintray.com/moesif/maven/moesif-android/_latestVersion)
+[![Built For][ico-built-for]][link-built-for]
+[![Latest Version][ico-version]][link-package]
+[![Software License][ico-license]][link-license]
+[![Source Code][ico-source]][link-source]
 
 moesif-android is a SDK that automatically captures HTTP traffic such as to your internal APIs or external APIs like Stripe.
 
@@ -160,3 +162,13 @@ LICENSE file in the com.moesif.android.inspector package for details.
 ## Other Integrations
 
 To view more more documenation on integration options, please visit __[the Integration Options Documentation](https://www.moesif.com/docs/getting-started/integration-options/).__
+
+[ico-built-for]: https://img.shields.io/badge/built%20for-android-blue.svg
+[ico-version]: https://api.bintray.com/packages/moesif/maven/moesif-android/images/download.svg
+[ico-license]: https://img.shields.io/badge/License-Apache%202.0-green.svg
+[ico-source]: https://img.shields.io/github/last-commit/moesif/moesif-android.svg?style=social
+
+[link-built-for]: https://developer.android.com/
+[link-package]: https://bintray.com/moesif/maven/moesif-android/_latestVersion
+[link-license]: https://raw.githubusercontent.com/Moesif/moesif-android/master/LICENSE
+[link-source]: https://github.com/moesif/moesif-android
