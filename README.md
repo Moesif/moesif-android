@@ -5,7 +5,8 @@
 [![Software License][ico-license]][link-license]
 [![Source Code][ico-source]][link-source]
 
-moesif-android is a SDK that automatically captures HTTP traffic such as to your internal APIs or external APIs like Stripe.
+moesif-android is a SDK that automatically captures HTTP traffic such as to your internal APIs or external APIs like Stripe
+and sends to [Moesif](https://www.moesif.com) for API analytics and log analysis.
 
 
 ## Requirements
@@ -60,6 +61,13 @@ dependencies {
 
 ### 2. In your AndroidManifest.xml, add your Moesif ApplicationId under the "application" node:
 
+Your Moesif Application Id can be found in the [_Moesif Portal_](https://www.moesif.com/).
+After signing up for a Moesif account, your Moesif Application Id will be displayed during the onboarding steps. 
+
+You can always find your Moesif Application Id at any time by logging 
+into the [_Moesif Portal_](https://www.moesif.com/), click on the top right menu,
+ and then clicking _Installation_.
+
 ```xml
 <application>
 
@@ -67,7 +75,7 @@ dependencies {
 
     <meta-data
         android:name="com.moesif.android.ApplicationId"
-        android:value="your_moesif_application_id" />
+        android:value="Your Moesif Application Id" />
 </application>
 ```
 
