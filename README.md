@@ -1,3 +1,7 @@
+This repo is deprecated, for capture outgoing API calls in Java/Kotlin envinroment, including Android, we recommend 
+
+https://github.com/Moesif/moesif-java-okhttp-interceptor
+
 # Moesif SDK for Android
 
 [![Built For][ico-built-for]][link-built-for]
